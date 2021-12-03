@@ -1,15 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+
 #root,
-.grid{
+.grid-wrapper,
+.grid,
+.r-wrapper{
   display: flex;
 }
 
 #root {
   flex-flow: column;
   align-items: center;
+  justify-content: center;
+}  
+
+#root * {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+}
+
+.r-wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.grid-wrapper {
+  background-color: #F1F5FB;
+  border-radius: 0.25rem;
+  padding: 20px;
 }
 
 .grid {
-  border: solid .5px #000;
   flex-wrap: wrap; 
 }
 
@@ -18,5 +38,12 @@
   margin: 0;
   padding: 0;
 }
-.skbox.drawn {
+
+button {
+  border-style: none;
+  border-radius: 0.25rem;
+  background-color: #526172;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 30px;
 }

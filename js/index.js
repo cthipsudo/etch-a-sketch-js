@@ -1,6 +1,6 @@
 //const gridSize = 256;
 const grid = document.querySelector(".grid");
-const gridWidth = 1024;
+const gridWidth = 896;
 let sizeOfSize = 16;
 
 const rng = () => {
