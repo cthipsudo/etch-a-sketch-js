@@ -4,8 +4,8 @@ const gridWidth = 1024;
 let sizeOfSize = 16;
 
 const rng = () => {
-  return Math.floor(Math.random()*255)
-}
+  return Math.floor(Math.random() * 255);
+};
 
 //rgb colors
 const value1 = rng();
@@ -21,15 +21,15 @@ let initialize = () => {
 };
 
 // Generate the boxes
-let makeGrid = (squares, boxSize) => { 
+let makeGrid = (squares, boxSize) => {
   //console.log(squares, boxSize);
   if (squares === 0) {
     return;
-  };
+  }
   const gridBox = document.createElement("div");
   gridBox.classList.add("skbox");
   gridBox.style.cssText = `width: ${boxSize}px; height: ${boxSize}px;`;
-  //gridBox.setAttribute("");
+  gridBox.setAttribute("data-opacity", 0);
   grid.appendChild(gridBox);
   makeGrid(squares - 1, boxSize);
 };
@@ -40,7 +40,9 @@ let addHover = () => {
   gridBoxes.forEach((gridBox) => {
     gridBox.addEventListener("mouseover", () => {
       //gridBox.classList.add("drawn");
-      gridBox.style.backgroundColor = `rgb(${value1},${value2},${value3})`
+      gridBox.style.backgroundColor = `rgb(${value1},${value2},${value3},${sketchShade(
+        gridBox
+      )})`;
     });
   });
 };
@@ -59,6 +61,14 @@ const clearBoxes = () => {
   promptSize();
 };
 
+const sketchShade = (gridBox) => {
+  let shadeOpacity = +gridBox.getAttribute("data-opacity");
+  if (shadeOpacity >= 1) return 1; // Shading is done.
+  shadeOpacity += .1;
+  gridBox.setAttribute("data-opacity", shadeOpacity);
+  return shadeOpacity;
+};
+
 // prompt size
 const promptSize = () => {
   sizeOfSize = prompt(
@@ -67,7 +77,7 @@ const promptSize = () => {
   console.log(sizeOfSize);
   if (sizeOfSize === null) sizeOfSize = 64;
   // Clear grid
-  while(grid.hasChildNodes()){
+  while (grid.hasChildNodes()) {
     grid.removeChild(grid.firstChild);
   }
   initialize();
