@@ -3,6 +3,15 @@ const grid = document.querySelector(".grid");
 const gridWidth = 1024;
 let sizeOfSize = 16;
 
+const rng = () => {
+  return Math.floor(Math.random()*255)
+}
+
+//rgb colors
+const value1 = rng();
+const value2 = rng();
+const value3 = rng();
+
 let initialize = () => {
   //console.log(`Making new sketchpad | side:${sizeOfSize}`);
   grid.style.cssText = `width:${gridWidth}px;`;
@@ -20,6 +29,7 @@ let makeGrid = (squares, boxSize) => {
   const gridBox = document.createElement("div");
   gridBox.classList.add("skbox");
   gridBox.style.cssText = `width: ${boxSize}px; height: ${boxSize}px;`;
+  //gridBox.setAttribute("");
   grid.appendChild(gridBox);
   makeGrid(squares - 1, boxSize);
 };
@@ -28,10 +38,9 @@ let makeGrid = (squares, boxSize) => {
 let addHover = () => {
   const gridBoxes = document.querySelectorAll(".skbox");
   gridBoxes.forEach((gridBox) => {
-    //console.log(gridBox);
     gridBox.addEventListener("mouseover", () => {
-      //console.log("hovered");
-      gridBox.classList.add("drawn");
+      //gridBox.classList.add("drawn");
+      gridBox.style.backgroundColor = `rgb(${value1},${value2},${value3})`
     });
   });
 };
@@ -51,7 +60,6 @@ const clearBoxes = () => {
 };
 
 // prompt size
-
 const promptSize = () => {
   sizeOfSize = prompt(
     "How big do you want your sketchpad? (Squares per side, 1-94 only)"
