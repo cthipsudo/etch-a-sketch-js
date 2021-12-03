@@ -1,0 +1,21 @@
+#root,
+.grid{
+  display: flex;
+}
+
+.grid {
+  border: solid .5px #000;
+  flex-wrap: wrap;
+  width: 192px; 
+}
+
+.skbox{
+  border: solid .5px #000;
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+}
+.skbox.drawn {
+  background-color: #000;
+}
